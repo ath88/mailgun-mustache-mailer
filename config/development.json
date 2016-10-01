@@ -1,0 +1,21 @@
+{
+    "mail": {
+        "mailgun": {
+            "from": "etree.dk <info@etree.dk>",
+            "domain": "etree.dk",
+            "apiKey": "key-xxx"
+        },
+        "jobs": [
+            {
+                "when": "* * * * * *",
+                "template": "demo"
+            }
+        ],
+        "mode": "demo",
+        "demoRecipient": {
+            "email": "asbjoern@gmail.com",
+            "name": "Asbjørn Thegler"
+        },
+        "dryrun": true
+    }
+}
