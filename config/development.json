@@ -8,10 +8,10 @@
         ],
         "demoRecipients": {
             "subscription-id-1": {
-                "email": "bryllup@dyhrbergthegler.dk"
+                "email": "info@etree.dk"
             },
             "subscription-id-2": {
-                "email": "asbjoern@gmail.com"
+                "email": "contact@etree.dk"
             }
         },
         "dryrun": true

@@ -18,6 +18,7 @@
     "mustache": "^2.2.1",
     "pg": "^6.1.0",
     "pg-pool": "^1.4.3",
+    "request": "^2.75.0",
     "uuid": "^2.0.2"
   },
   "devDependencies": {

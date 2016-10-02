@@ -1,4 +1,4 @@
-FROM node:argon
+FROM node:slim
 MAINTAINER Asbjørn Thegler <asbjoern@gmail.com>
 
 # Create app directory
@@ -9,8 +9,8 @@ WORKDIR /usr/src/app
 COPY . /usr/src/app
 RUN npm install
 
-EXPOSE 3000
-
 ENV NODE_ENV production
+
+VOLUME /usr/src/app/jobs
 
 CMD [ "npm", "start" ]

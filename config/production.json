@@ -1,0 +1,26 @@
+{
+    "postgres": {
+        "host": "localhost"
+    },
+    "mail": {
+        "mailgun": {
+            "from": "etree.dk <info@etree.dk>",
+            "domain": "etree.dk",
+            "apiKey": "please-supply-mailgun-apikey-in-env"
+        },
+        "jobs": [
+            {
+                "when": "2016-10-02T14:00:00",
+                "template": "demo"
+            }
+        ],
+        "demoRecipients": {
+            "subscription-id-1": {
+                "email": "asbjoern@thegler.dk"
+            },
+            "subscription-id-2": {
+                "email": "asbjoern@gmail.com"
+            }
+        }
+    }
+}
