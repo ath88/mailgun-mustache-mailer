@@ -1,6 +1,6 @@
 {
     "postgres": {
-        "host": "localhost"
+        "host": "postgres"
     },
     "mail": {
         "mailgun": {
