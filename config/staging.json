@@ -1,0 +1,11 @@
+{
+    "mail": {
+        "jobs": [
+            {
+                "when": "* * * * *",
+                "template": "demo"
+            }
+        ],
+        "dryrun": true
+    }
+}

@@ -1,20 +1,18 @@
 {
     "mail": {
-        "mailgun": {
-            "from": "etree.dk <info@etree.dk>",
-            "domain": "etree.dk",
-            "apiKey": "key-xxx"
-        },
         "jobs": [
             {
-                "when": "* * * * * *",
+                "when": "* * * * *",
                 "template": "demo"
             }
         ],
-        "mode": "demo",
-        "demoRecipient": {
-            "email": "asbjoern@gmail.com",
-            "name": "Asbjørn Thegler"
+        "demoRecipients": {
+            "subscription-id-1": {
+                "email": "bryllup@dyhrbergthegler.dk"
+            },
+            "subscription-id-2": {
+                "email": "asbjoern@gmail.com"
+            }
         },
         "dryrun": true
     }
