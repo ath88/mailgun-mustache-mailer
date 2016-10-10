@@ -1,27 +1,20 @@
 {
-  "name": "email-service",
+  "name": "mailgun-mustache-mailer",
   "version": "0.0.1",
-  "description": "mailgun email service for etree2",
-  "scripts": {
-    "start": "node service.js",
-    "clean": "rm -rf jobs/*"
-  },
+  "description": "a library for sending mustache formatted mails via mailgun",
+  "main": "index.js",
+  "license": "MIT",
   "author": "Asbjørn Thegler <asbjoern@thegler.dk>",
-  "contributors": [
-    "Asbjørn Thegler"
-  ],
-  "license": "UNLICENSED",
-  "dependencies": {
-    "async": "^2.0.0",
-    "config": "^1.21.0",
-    "cron": "^1.1.0",
-    "mustache": "^2.2.1",
-    "pg": "^6.1.0",
-    "pg-pool": "^1.4.3",
-    "request": "^2.75.0",
-    "uuid": "^2.0.2"
+  "scripts": {
+    "clean": "rm -rf node_modules"
   },
-  "devDependencies": {
-    "jasmine": "^2.4.1"
+  "files": [
+    "lib/",
+    "index.js"
+  ],
+  "dependencies": {
+    "async": "^2.0.1",
+    "mustache": "^2.2.1",
+    "request": "^2.75.0"
   }
 }
