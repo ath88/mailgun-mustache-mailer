@@ -6,6 +6,8 @@
   "license": "MIT",
   "author": "Asbjørn Thegler <asbjoern@thegler.dk>",
   "scripts": {
+    "test": "mocha --recursive",
+    "cover": "istanbul cover _mocha -- --recursive",
     "clean": "rm -rf node_modules"
   },
   "files": [
@@ -16,5 +18,13 @@
     "async": "^2.0.1",
     "mustache": "^2.2.1",
     "request": "^2.75.0"
+  },
+  "devDependencies": {
+    "chai": "^4.0.1",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.4.2",
+    "proxyquire": "^1.8.0",
+    "sinon": "^2.3.2",
+    "sinon-chai": "^2.10.0"
   }
 }

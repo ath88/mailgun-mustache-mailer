@@ -22,7 +22,7 @@ var template = {
 };
 
 var recipient = {
-    email: "asbjoern@thegler.dk",
+    email: "asbjoern@deranged.dk",
     name: "Asbjørn Thegler"
 };
 
@@ -42,7 +42,7 @@ var template = {
 };
 
 var recipients = [{
-    email: "asbjoern@thegler.dk",
+    email: "asbjoern@deranged.dk",
     name: "Asbjørn Thegler"
 }];
 
