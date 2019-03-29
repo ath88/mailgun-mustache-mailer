@@ -27,7 +27,7 @@ describe("file sender", () => {
     });
 
     it("succeeds posting to mailgun", (done) => {
-        sender(mail, {}, (error) => {
+        sender(mail, { someOption: true }, (error) => {
             c.expect(error).to.be.not.ok;
 
             c.expect(request.post).to.have.been.calledWith({
@@ -41,7 +41,8 @@ describe("file sender", () => {
                     to: "Asbjørn <asbjoern@deranged.dk>",
                     subject: "This email is important",
                     html: "<p>Read this!</p>",
-                    text: "Read this!"
+                    text: "Read this!",
+                    someOption: true
                 }
             });
 

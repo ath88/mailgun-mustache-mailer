@@ -66,6 +66,23 @@ describe("MailgunMustacheMailer", () => {
             });
         });
 
+        it("passes mailgun options through to the sender", (done) => {
+            mailgunMustacheMailer.send(template, recipient, {
+                someOption: true
+            }, (error) => {
+                c.expect(error).to.be.not.ok;
+                c.expect(senderFunction).to.have.been.calledWith({
+                    email: "asbjoern@deranged.dk",
+                    name: "Asbjørn Thegler",
+                    subject: "Hello Asbjørn Thegler!",
+                    text: "Hello Asbjørn Thegler!\n",
+                    html: "<p>Hello Asbjørn Thegler!</p>"
+                }, { someOption: true });
+
+                done();
+            });
+        });
+
         it("returns the id of the sent email", (done) => {
             mailgunMustacheMailer.send(template, recipient, (error, id) => {
                 c.expect(error).to.be.not.ok;
@@ -121,6 +138,38 @@ describe("MailgunMustacheMailer", () => {
                     text: "Hello Anders Enghøj!\n",
                     html: "<p>Hello Anders Enghøj!</p>"
                 });
+
+                done();
+            });
+        });
+
+        it("passes mailgun options through to the sender", (done) => {
+            mailgunMustacheMailer.sendBatch(template, recipients, {
+                someOption: true
+            }, (error) => {
+                c.expect(error).to.be.not.ok;
+
+                c.expect(senderFunction).to.have.been.calledWith({
+                    email: "asbjoern@deranged.dk",
+                    name: "Asbjørn Thegler",
+                    subject: "Hello Asbjørn Thegler!",
+                    text: "Hello Asbjørn Thegler!\n",
+                    html: "<p>Hello Asbjørn Thegler!</p>"
+                }, { someOption: true });
+                c.expect(senderFunction).to.have.been.calledWith({
+                    email: "niels@deranged.dk",
+                    name: "Niels Abildgaard",
+                    subject: "Hello Niels Abildgaard!",
+                    text: "Hello Niels Abildgaard!\n",
+                    html: "<p>Hello Niels Abildgaard!</p>"
+                }, { someOption: true });
+                c.expect(senderFunction).to.have.been.calledWith({
+                    email: "anders@deranged.dk",
+                    name: "Anders Enghøj",
+                    subject: "Hello Anders Enghøj!",
+                    text: "Hello Anders Enghøj!\n",
+                    html: "<p>Hello Anders Enghøj!</p>"
+                }, { someOption: true });
 
                 done();
             });

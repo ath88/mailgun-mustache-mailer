@@ -21,10 +21,11 @@ describe("file sender", () => {
         sender = file({}, log);
     });
 
-    it("writes two files to disk", (done) => {
+    it("writes three files to disk", (done) => {
         sender(mail, {}, (error) => {
             c.expect(error).to.be.not.ok;
 
+            c.expect(fs.writeFileSync).to.have.been.calledWith("file-sender.1234.asbjoern@deranged.dk.This email is important.options", "{}");
             c.expect(fs.writeFileSync).to.have.been.calledWith("file-sender.1234.asbjoern@deranged.dk.This email is important.text", "Read this!");
             c.expect(fs.writeFileSync).to.have.been.calledWith("file-sender.1234.asbjoern@deranged.dk.This email is important.html", "<p>Read this!</p>");
 
