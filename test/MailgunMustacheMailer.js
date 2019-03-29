@@ -9,7 +9,7 @@ describe("MailgunMustacheMailer", () => {
     beforeEach(() => {
         log = { info: s.stub() };
         config = { };
-        senderFunction = s.spy((recipient, callback) => setImmediate(callback, null, "some-sent-id"));
+        senderFunction = s.spy((recipient, mailgunOptions, callback) => setImmediate(callback, null, "some-sent-id"));
         sender = s.stub().returns(senderFunction);
 
         template = {
@@ -141,7 +141,7 @@ describe("MailgunMustacheMailer", () => {
         it("returns any errors during sending", (done) => {
             let count = 0;
             const mailError = new Error();
-            senderFunction.func = (recipient, callback) => {
+            senderFunction.func = (recipient, mailgunOptions, callback) => {
                 count++;
                 if(count === 1) return setImmediate(callback, mailError);
                 return setImmediate, callback(null, "some-sent-id");

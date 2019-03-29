@@ -27,7 +27,7 @@ describe("file sender", () => {
     });
 
     it("succeeds posting to mailgun", (done) => {
-        sender(mail, (error) => {
+        sender(mail, {}, (error) => {
             c.expect(error).to.be.not.ok;
 
             c.expect(request.post).to.have.been.calledWith({
@@ -53,7 +53,7 @@ describe("file sender", () => {
         const mailgunError = new Error();
         request.post.func = (options, callback) => callback(mailgunError);
 
-        sender(mail, (error) => {
+        sender(mail, {}, (error) => {
             c.expect(error).to.equal(mailgunError);
 
             done();
