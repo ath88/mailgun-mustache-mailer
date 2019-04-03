@@ -4,14 +4,15 @@ mailgun-mustache-mailer
 This is a simple wrapper around mustache and mailgun.com's email API.
 
 It is constructed by supplying the domain and API-key obtained from mailgun.com, as well as the email address that emails should appear to be sent from.
-A second argument, `log` is supplied, with a single method `info`, which is called when the mailer wants to log something.
+
+A second argument, `log` *may* is supplied, with a single method `info`, which is called when the mailer wants to log something.
+It defaults to `{ info: console.log }`.
 
 ``` javascript
 var MailgunMustacheMailer = require("mailgun-mustache-mailer");
 var config = { domain: "example.com", apiKey: "secret-mailgun-key", from: "test@example.com" };
-var log = { info: console.log };
 
-var mailgunMustacheMailer = new MailgunMustacheMailer(config, log);
+var mailgunMustacheMailer = new MailgunMustacheMailer(config);
 ```
 
 After construction, the object can be used to send either single emails:
