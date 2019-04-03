@@ -18,13 +18,14 @@ describe("file sender", () => {
         uuid = { v4: s.stub().returns("1234") };
         file = proxyquire(testSubject, { fs, uuid });
 
-        sender = file({ }, log);
+        sender = file({}, log);
     });
 
-    it("writes two files to disk", (done) => {
-        sender(mail, (error) => {
+    it("writes three files to disk", (done) => {
+        sender(mail, {}, (error) => {
             c.expect(error).to.be.not.ok;
 
+            c.expect(fs.writeFileSync).to.have.been.calledWith("file-sender.1234.asbjoern@deranged.dk.This email is important.options", "{}");
             c.expect(fs.writeFileSync).to.have.been.calledWith("file-sender.1234.asbjoern@deranged.dk.This email is important.text", "Read this!");
             c.expect(fs.writeFileSync).to.have.been.calledWith("file-sender.1234.asbjoern@deranged.dk.This email is important.html", "<p>Read this!</p>");
 

@@ -9,7 +9,7 @@ describe("MailgunMustacheMailer", () => {
     beforeEach(() => {
         log = { info: s.stub() };
         config = { };
-        senderFunction = s.spy((recipient, callback) => setImmediate(callback, null, "some-sent-id"));
+        senderFunction = s.spy((recipient, mailgunOptions, callback) => setImmediate(callback, null, "some-sent-id"));
         sender = s.stub().returns(senderFunction);
 
         template = {
@@ -61,6 +61,23 @@ describe("MailgunMustacheMailer", () => {
                     text: "Hello Asbjørn Thegler!\n",
                     html: "<p>Hello Asbjørn Thegler!</p>"
                 });
+
+                done();
+            });
+        });
+
+        it("passes mailgun options through to the sender", (done) => {
+            mailgunMustacheMailer.send(template, recipient, {
+                someOption: true
+            }, (error) => {
+                c.expect(error).to.be.not.ok;
+                c.expect(senderFunction).to.have.been.calledWith({
+                    email: "asbjoern@deranged.dk",
+                    name: "Asbjørn Thegler",
+                    subject: "Hello Asbjørn Thegler!",
+                    text: "Hello Asbjørn Thegler!\n",
+                    html: "<p>Hello Asbjørn Thegler!</p>"
+                }, { someOption: true });
 
                 done();
             });
@@ -126,6 +143,38 @@ describe("MailgunMustacheMailer", () => {
             });
         });
 
+        it("passes mailgun options through to the sender", (done) => {
+            mailgunMustacheMailer.sendBatch(template, recipients, {
+                someOption: true
+            }, (error) => {
+                c.expect(error).to.be.not.ok;
+
+                c.expect(senderFunction).to.have.been.calledWith({
+                    email: "asbjoern@deranged.dk",
+                    name: "Asbjørn Thegler",
+                    subject: "Hello Asbjørn Thegler!",
+                    text: "Hello Asbjørn Thegler!\n",
+                    html: "<p>Hello Asbjørn Thegler!</p>"
+                }, { someOption: true });
+                c.expect(senderFunction).to.have.been.calledWith({
+                    email: "niels@deranged.dk",
+                    name: "Niels Abildgaard",
+                    subject: "Hello Niels Abildgaard!",
+                    text: "Hello Niels Abildgaard!\n",
+                    html: "<p>Hello Niels Abildgaard!</p>"
+                }, { someOption: true });
+                c.expect(senderFunction).to.have.been.calledWith({
+                    email: "anders@deranged.dk",
+                    name: "Anders Enghøj",
+                    subject: "Hello Anders Enghøj!",
+                    text: "Hello Anders Enghøj!\n",
+                    html: "<p>Hello Anders Enghøj!</p>"
+                }, { someOption: true });
+
+                done();
+            });
+        });
+
         it("returns the sent id of all emails", (done) => {
             mailgunMustacheMailer.sendBatch(template, recipients, (error, ids) => {
                 c.expect(error).to.be.not.ok;
@@ -141,7 +190,7 @@ describe("MailgunMustacheMailer", () => {
         it("returns any errors during sending", (done) => {
             let count = 0;
             const mailError = new Error();
-            senderFunction.func = (recipient, callback) => {
+            senderFunction.func = (recipient, mailgunOptions, callback) => {
                 count++;
                 if(count === 1) return setImmediate(callback, mailError);
                 return setImmediate, callback(null, "some-sent-id");
