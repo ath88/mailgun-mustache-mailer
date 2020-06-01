@@ -1,6 +1,6 @@
 {
   "name": "mailgun-mustache-mailer",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "a library for sending mustache formatted mails via mailgun",
   "main": "index.js",
   "license": "MIT",
