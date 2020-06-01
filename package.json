@@ -1,6 +1,6 @@
 {
   "name": "mailgun-mustache-mailer",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "a library for sending mustache formatted mails via mailgun",
   "main": "index.js",
   "license": "MIT",
@@ -22,7 +22,7 @@
   "devDependencies": {
     "chai": "^4.0.1",
     "istanbul": "^0.4.5",
-    "mocha": "^3.4.2",
+    "mocha": "^7.2.0",
     "proxyquire": "^1.8.0",
     "sinon": "^2.3.2",
     "sinon-chai": "^2.10.0"
